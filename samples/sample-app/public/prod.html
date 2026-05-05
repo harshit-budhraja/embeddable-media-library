@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ImageKit Media Library Widget (prod)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/styles.css">
+  </head>
+
+  <body>
+    <h1 class="text-center">ImageKit Media Library Widget (prod)</h1>
+    <div class="wrapper">
+      <div id="container"></div>
+    </div>
+  </body>
+
+  <script src="/static/imagekit-media-library-widget.min.js"></script>
+
+  <script>
+    var pluginOptions = {
+      container: '#container',
+      className: 'media-library-widget',
+      dimensions: { height: '100%', width: '100%' },
+      view: 'modal',
+      renderOpenButton: true,
+    };
+
+    var mediaLibraryWidget = new IKMediaLibraryWidget(pluginOptions, (payload) => {
+      console.log(payload);
+    });
+  </script>
+</html>

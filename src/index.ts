@@ -44,6 +44,12 @@ export class ImagekitMediaLibraryWidget {
     constructor(options: MediaLibraryWidgetOptions, callback: MediaLibraryWidgetCallback) {
         // Create global element references
         this.widgetHost = window.location.href;
+
+        // Allow runtime override (used by the sample app's /local/:port route).
+        const runtimeHost = window.IK_MEDIA_LIBRARY_WIDGET_IK_HOST;
+        if (typeof runtimeHost === "string" && runtimeHost.length > 0) {
+            this.IK_HOST = runtimeHost;
+        }
         // Define option defaults 
         this.options = this.getDefaultOptions();
         // Create options by extending defaults with the passed in arguments
@@ -364,6 +370,7 @@ export class ImagekitMediaLibraryWidget {
 declare global {
     interface Window {
         IKMediaLibraryWidget: typeof ImagekitMediaLibraryWidget;
+        IK_MEDIA_LIBRARY_WIDGET_IK_HOST?: string;
     }
 }
 
